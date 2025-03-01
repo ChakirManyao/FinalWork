@@ -1,0 +1,15 @@
+# Виртуальное окружение
+_venv/
+
+# ChromeDriver
+chromedriver
+chromedriver.exe
+LICENSE_chromedriver
+
+# PyCharm
+.idea/
+*.iml
+
+# Кэш Python
+__pycache__/
+*.py[cod]
