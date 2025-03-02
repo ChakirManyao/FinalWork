@@ -13,3 +13,6 @@ LICENSE_chromedriver
 # Кэш Python
 __pycache__/
 *.py[cod]
+
+#gitignore
+.gitignore
