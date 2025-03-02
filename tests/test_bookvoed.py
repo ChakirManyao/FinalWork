@@ -7,10 +7,18 @@ from pages.search_page import SearchPage
 from pages.product_page import ProductPage
 from pages.cart_page import CartPage
 
+
 @pytest.fixture(scope="module")
 def driver():
+    # Инициализация драйвера
     driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
+
+    # Открытие браузера на весь экран
+    driver.maximize_window()
+
     yield driver
+
+    # Закрытие браузера после завершения тестов
     driver.quit()
 
 def test_bookvoed(driver):
@@ -23,8 +31,7 @@ def test_bookvoed(driver):
     driver.get("https://www.bookvoed.ru")
 
     # Шаг 2: Закрытие всплывающего окна с выбором города (если оно есть)
-    if main_page.is_element_present(main_page.CITY_POPUP_CLOSE_BUTTON):
-        main_page.close_city_popup()
+    main_page.close_city_popup()
 
     # Шаг 3: Поиск товара
     main_page.search_for_product("Python")
