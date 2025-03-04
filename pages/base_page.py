@@ -22,3 +22,10 @@ class BasePage:
             return True
         except:
             return False
+
+    def select_dropdown_option(self, dropdown_locator, option_value):
+        """Выбирает опцию в выпадающем списке."""
+        dropdown = self.wait.until(EC.element_to_be_clickable(dropdown_locator))
+        dropdown.click()
+        option = self.wait.until(EC.element_to_be_clickable((By.XPATH, f"//option[@value='{option_value}']")))
+        option.click()
