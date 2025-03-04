@@ -22,4 +22,6 @@ class ProductPage(BasePage):
     def is_product_in_cart(self):
         """Проверяет, добавлен ли товар в корзину."""
         self.click(self.CART_ICON)  # Переходим в корзину
-        return not self.is_cart_empty()  # Используем метод из CartPage
+        from pages.cart_page import CartPage  # Импортируем CartPage
+        cart_page = CartPage(self.driver)  # Создаем экземпляр CartPage
+        return not cart_page.is_cart_empty()  # Используем метод из CartPage
